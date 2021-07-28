@@ -9,15 +9,11 @@
   <meta name="author" content="">
   <title>Freelancer - Start Bootstrap Theme</title>
   <!-- Bootstrap core CSS -->
-  <link href="<?php echo get_template_directory_uri()?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template -->
-  <link href="<?php echo get_template_directory_uri()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <!-- Plugin CSS -->
-  <link href="<?php echo get_template_directory_uri()?>/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template -->
-  <link href="<?php echo get_template_directory_uri()?>/css/freelancer.min.css" rel="stylesheet">
+  <?php
+  wp_head();
+  ?>
+  <!-- on mets tous nos lien dans notre functions.php avec notre méthode -->
+  <!-- https://developer.wordpress.org/reference/functions/wp_head/ -->
 </head>
 <body id="page-top">
   <!-- Navigation -->
@@ -29,7 +25,7 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <!-- <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a>
           </li>
@@ -39,7 +35,16 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
-        </ul>
+        </ul> -->
+        <?php
+        wp_nav_menu([
+            // 'menu' => 'main-menu',
+          'menu_class' => 'navbar-nav ml-auto',
+          'theme-location' => 'main-menu',
+          'container' => ''
+        ]);
+        ?>
       </div>
     </div>
   </nav>
+  <!--Ajouter une fonction qui va enregistrer un emplacement pour les menu. Cela permet alors de créer des menus dans le backoffice sous le sous onglet apparence > menus. on créé alors un menu avec les liens portfolio, about et contact en faisant en sorte d'avoir le bon lien (/#portfolio). Dans le header on rajouter la fonction wp_nav_menu() et on passe les paramêtre). on rempli les paramètres en se référant à la documentation. dans le back office on peu ajouter des class au li si on ajoute la possibilité dans les options de la page. On ajoutera les class pour la balise a plus tard -->
